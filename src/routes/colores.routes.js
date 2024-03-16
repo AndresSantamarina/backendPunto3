@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { crearColor } from "../controllers/colores.controllers.js";
+import { crearColor, listarColores } from "../controllers/colores.controllers.js";
 
 
 const router = Router();
 
-router.route('/colores').post(crearColor)
+router.route('/colores').get(listarColores).post(crearColor)
 
 export default router;
