@@ -1,12 +1,23 @@
 import Color from "../database/model/color.js";
 
-export const listarColores = async (req, res)=>{
+export const listarColores = async (req, res) => {
     try {
         const colores = await Color.find();
         res.status(200).json(colores)
     } catch (error) {
         res.status(404).json({
             mensaje: "No se encontraron colores"
+        })
+    }
+}
+
+export const obtenerColor = async (req, res) => {
+    try {
+        const colorBuscado = await Color.findById(req.params.id)
+        res.status(200).json(colorBuscado)
+    } catch (error) {
+        res.status(404).json({
+            mensaje: "No se encontró el color"
         })
     }
 }
@@ -26,10 +37,10 @@ export const crearColor = async (req, res) => {
     }
 }
 
-export const editarColor = async (req, res)=>{
+export const editarColor = async (req, res) => {
     try {
         const buscarColor = await Color.findById(req.params.id)
-        if(!buscarColor){
+        if (!buscarColor) {
             return res.status(404).json({
                 mensaje: "No se pudo editar el color, el id es incorrecto"
             })
@@ -45,10 +56,10 @@ export const editarColor = async (req, res)=>{
     }
 }
 
-export const borrarColor = async (req, res)=>{
+export const borrarColor = async (req, res) => {
     try {
         const buscarColor = await Color.findById(req.params.id)
-        if(!buscarColor){
+        if (!buscarColor) {
             return res.status(404).json({
                 mensaje: "No se pudo borrar el color, el id es incorrecto"
             })
