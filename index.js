@@ -13,12 +13,7 @@ app.listen(app.get('port'), () => {
     console.log('Estoy en el puerto ' + app.get('port'))
 })
 
-app.use(cors({
-    "origin": "https://backend-punto4-santamarina.netlify.app/",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
-}));
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
