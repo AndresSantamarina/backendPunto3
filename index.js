@@ -14,7 +14,7 @@ app.listen(app.get('port'), () => {
 })
 
 app.use(cors({
-    "origin": "*",
+    "origin": "https://backend-punto4-santamarina.netlify.app/",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "preflightContinue": false,
     "optionsSuccessStatus": 204
