@@ -13,7 +13,12 @@ app.listen(app.get('port'), ()=>{
     console.log('Estoy en el puerto '+ app.get('port'))
 })
 
-app.use(cors());
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  };
+
+app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
